@@ -23,8 +23,4 @@ def create_pipeline(**kwargs) -> Pipeline:
                         name='plot_pca', # Becomes 'red.plot_pca' or 'white.plot_pca'
                         tags='plot')]
     return pipeline(my_pipeline,
-                    inputs = {'winequality': f'winequality-{wine_type}'}, # Change all calls to 'red.winequality' to 'winequality-red' (and 'white.winequality' to 'winequality-white')
-                    parameters = {'params:dir.plot': 'params:dir.plot', # Change all calls to 'params:red.dir.plot' to 'dir.plot' (and 'params:white.dir.plot' to 'dir.plot')
-                              f'params:which': f'{wine_type}', # Change all calls to 'params:red.which' to 'red' (and 'params:white.which' to 'white')
-                              'params:pca' : 'params:pca'}, # Change all calls to 'red.pca' to 'pca' (and 'white.pca' to 'pca')
                     namespace=f'{wine_type}') # All nodes, parameters, inputs and outputs will have the prefix red or white added to them
