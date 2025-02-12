@@ -11,7 +11,8 @@ def create_pipeline(**kwargs) -> Pipeline:
     
     my_pipeline = [node(func=std_scale,
                         inputs=['winequality'], # Becomes 'red.winequality' or 'white.winequality'
-                        outputs='winequality_scaled', # Becomes 'red.winequality_scaled' 'white.winequality_scaled'
+                        outputs='winequality_scaled', # Becomes 'red.winequality_scaled' or 'white.winequality_scaled'
+                        name='std_scale', # Becomes 'red.std_scale' or 'white.std_scale'
                         tags='quality_control'),
                    node(func=plot_pca,
                         inputs={"data": 'winequality_scaled', 
@@ -19,6 +20,7 @@ def create_pipeline(**kwargs) -> Pipeline:
                                 "save_dir": 'params:dir.plot', # Becomes 'red.dir.plot' or 'white.dir.plot'
                                 "pca_args": 'params:pca'}, # Becomes 'red.pca' 'white.pca'
                         outputs=None,
+                        name='plot_pca', # Becomes 'red.plot_pca' or 'white.plot_pca'
                         tags='plot')]
     return pipeline(my_pipeline,
                     inputs = {'winequality': f'winequality-{wine_type}'}, # Change all calls to 'red.winequality' to 'winequality-red' (and 'white.winequality' to 'winequality-white')
