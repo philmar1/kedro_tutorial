@@ -21,3 +21,13 @@ random-data:
     sep: ';'
   versioned: True
 
+
+## 02 - Intermediate
+red.winequality_scaled: 
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/winequality-red_scaled.csv
+
+white.winequality_scaled: 
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/winequality-white_scaled.csv
+  

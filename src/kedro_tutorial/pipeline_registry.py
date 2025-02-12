@@ -12,9 +12,10 @@ def register_pipelines() -> dict[str, Pipeline]:
     Returns:
         A mapping from pipeline names to ``Pipeline`` objects.
     """
-    pipelines = find_pipelines()
+    pipelines = {} #find_pipelines()
     pipelines["__default__"] = sum(pipelines.values())
     
-    pipelines['quality_control'] = quality_control.create_pipeline()
+    pipelines['quality_control-red'] = quality_control.create_pipeline(wine_type='red')
+    pipelines['quality_control-white'] = quality_control.create_pipeline(wine_type='white')
     
     return pipelines
