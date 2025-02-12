@@ -1,0 +1,23 @@
+## 01 - Raw
+
+winequality-red: 
+  type: pandas.CSVDataset
+  filepath: data/01_raw/winequality-red.csv
+  load_args: # step 2
+    sep: ';'
+
+winequality-white: 
+  type: pandas.CSVDataset
+  filepath: data/01_raw/winequality-white.csv
+  load_args: # step 2
+    sep: ';'
+
+random-data:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/random-data.csv
+  save_args: 
+    index: False
+  load_args:
+    sep: ';'
+  versioned: True
+
