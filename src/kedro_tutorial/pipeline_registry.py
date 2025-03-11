@@ -3,7 +3,7 @@
 from kedro.framework.project import find_pipelines
 from kedro.pipeline import Pipeline
 
-from kedro_tutorial.pipelines import quality_control
+from kedro_tutorial.pipelines import quality_control, data_science
 
 
 def register_pipelines() -> dict[str, Pipeline]:
@@ -17,5 +17,7 @@ def register_pipelines() -> dict[str, Pipeline]:
     
     pipelines['quality_control-red'] = quality_control.create_pipeline(wine_type='red')
     pipelines['quality_control-white'] = quality_control.create_pipeline(wine_type='white')
+    
+    pipelines['data_science'] = data_science.create_pipeline()
     
     return pipelines
